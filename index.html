@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Horloger | Luxury Watch</title>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ffb4ab", "surface-container-high": "#2a2a2a", "secondary-fixed-dim": "#dec48a", "on-tertiary-fixed": "#1f1b14", "primary-container": "#c6a76a", "on-secondary-container": "#d0b57d", "on-error-container": "#ffdad6", "on-surface": "#e5e2e1", "secondary": "#dec48a", "outline-variant": "#4d463a", "on-primary-fixed-variant": "#5a4310", "inverse-surface": "#e5e2e1", "on-secondary": "#3e2e02", "on-secondary-fixed-variant": "#574417", "on-primary-fixed": "#261900", "primary-fixed": "#ffdea1", "on-primary-container": "#513c08", "outline": "#998f81", "on-primary": "#402d00", "surface-container-lowest": "#0e0e0e", "inverse-on-surface": "#313030", "on-error": "#690005", "tertiary": "#cec5bb", "primary-fixed-dim": "#e3c283", "primary": "#e3c283", "tertiary-fixed": "#ebe1d6", "secondary-container": "#594719", "background": "#131313", "surface": "#131313", "inverse-primary": "#735b26", "surface-variant": "#353534", "surface-container": "#201f1f", "on-secondary-fixed": "#251a00", "surface-tint": "#e3c283", "on-tertiary-container": "#443f37", "tertiary-container": "#b2aaa0", "surface-container-low": "#1c1b1b", "surface-bright": "#3a3939", "error-container": "#93000a", "on-background": "#e5e2e1", "on-tertiary-fixed-variant": "#4c463e", "on-surface-variant": "#d0c5b5", "tertiary-fixed-dim": "#cec5bb", "on-tertiary": "#353028", "surface-dim": "#131313", "secondary-fixed": "#fcdfa3", "surface-container-highest": "#353534" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-sm": "0.75rem", "space-xl": "6rem", "gutter-tablet": "1.5rem", "gutter": "2rem", "margin-tablet": "2.5rem", "margin-mobile": "1.25rem", "space-xs": "0.375rem", "gutter-mobile": "1rem", "margin": "5rem", "space-md": "1.5rem", "space-lg": "3rem" }, "fontFamily": { "label-caps-sm": ["Inter"], "display-hero-mobile": ["EB Garamond"], "spec-code": ["Inter"], "body-md": ["Inter"], "headline-sm": ["EB Garamond"], "display-hero": ["EB Garamond"], "body-sm": ["Inter"], "headline-lg": ["EB Garamond"], "body-lg": ["Inter"], "label-caps-lg": ["Inter"], "headline-md": ["EB Garamond"], "headline-lg-mobile": ["EB Garamond"] }, "fontSize": { "label-caps-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.22em", "fontWeight": "600" }], "display-hero-mobile": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "spec-code": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "500" }], "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-sm": ["24px", { "lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "500" }], "display-hero": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "body-lg": ["18px", { "lineHeight": "30px", "letterSpacing": "0", "fontWeight": "300" }], "label-caps-lg": ["12px", { "lineHeight": "16px", "letterSpacing": "0.18em", "fontWeight": "600" }], "headline-md": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "400" }], "headline-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "0", "fontWeight": "400" }] } } } };</script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #c7a66a;
+            --dark: #050607;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--dark);
+        }
+
+        body { overflow-x: hidden; }
+
+        .scroll-section { height: 500vh; position: relative; }
+
+        .canvas-container {
+            position: sticky;
+            top: 0;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            overflow: hidden;
+            isolation: isolate;
+
+            background:
+                radial-gradient(ellipse at 50% 44%,
+                    #202329 0%,
+                    #15171b 34%,
+                    #0b0d10 65%,
+                    #030405 100%);
+        }
+
+        /* Consistent cinematic lighting across the viewport */
+        .canvas-container::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+
+            background:
+                radial-gradient(ellipse at 50% 44%,
+                    transparent 35%,
+                    rgba(3, 4, 5, 0.12) 68%,
+                    rgba(3, 4, 5, 0.48) 100%);
+        }
+
+        canvas {
+            display: block;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Premium loading screen */
+        .loading {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(ellipse at 50% 42%,
+                    #191a1d 0%,
+                    #0a0b0d 48%,
+                    #020303 100%);
+
+            color: #f5f0e6;
+            font-family: Arial, Helvetica, sans-serif;
+
+            opacity: 1;
+            visibility: visible;
+            transition:
+                opacity 0.9s ease,
+                visibility 0.9s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .brand-mark {
+            color: var(--gold);
+            font-family: Georgia, serif;
+            font-size: 11px;
+            letter-spacing: 6px;
+            margin-left: 6px;
+        }
+
+        .loader-ring {
+            --progress: 0deg;
+
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+
+            background: conic-gradient(var(--gold) 0deg,
+                    #947342 var(--progress),
+                    rgba(190, 157, 101, 0.13) var(--progress),
+                    rgba(190, 157, 101, 0.13) 360deg);
+
+            box-shadow: 0 0 32px rgba(196, 157, 89, 0.12);
+        }
+
+        .loader-ring::before {
+            content: "";
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: #0b0c0e;
+        }
+
+        .loader-percent {
+            position: relative;
+            z-index: 1;
+            color: #e8d5ad;
+            font-size: 17px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .loading-title {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 400;
+            font-size: 21px;
+            letter-spacing: 3px;
+        }
+
+        .loading-subtitle {
+            margin: -12px 0 0;
+            color: #96938c;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .loader-line {
+            width: 150px;
+            height: 2px;
+            overflow: hidden;
+            background: rgba(201, 170, 112, 0.16);
+        }
+
+        .loader-line span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.2s linear;
+            box-shadow: 0 0 12px rgba(211, 174, 106, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .loader-content {
+                gap: 19px;
+            }
+
+            .loader-ring {
+                width: 76px;
+                height: 76px;
+            }
+
+            .loading-title {
+                font-size: 17px;
+                letter-spacing: 2px;
+            }
+
+            .brand-mark {
+                font-size: 10px;
+                letter-spacing: 4px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .loading,
+            .loader-line span {
+                transition-duration: 0.01ms;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="fixed top-0 left-0 right-0 z-50 pt-space-xs transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-margin-mobile sm:px-margin-tablet lg:px-margin">
+            <div class="h-20 bg-transparent backdrop-blur-md border border-outline-variant/20 flex items-center justify-between px-space-md shadow-lg rounded-b-xl">
+                <div class="flex items-center gap-space-sm">
+                    <a class="flex items-center gap-space-xs focus:outline-none" href="#home">
+                        <img alt="Jack's Luxury Watches" class="h-14 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W9Hsbgl-wLUlmb2eLkj8bDbm0UIQ0TpKozOd7wyle2AssNqKvBjnePSbOM3AwkEXhuyIN8f2ZMaeAbeQ5C_Owj41ef2T74Eji0vzEAVCximVFyMw6kkGQ5b5gboJ2ea48_wxJbGv_QGx5svWWdOY8sPt8Yv7Fsmw5sjgBfD6vymHZefdCHAA3cKvsRLzV4hqit3YfdyxiQOmP2WgezDBX4LTb7Tt-p4__HcpQsv4bWyupxfE6CwBcg9CCnd-d_imlrLECqQbDXFuk"/>
+                        <span class="nav-dynamic-text transition-colors duration-300 font-headline-sm text-headline-sm tracking-widest uppercase text-on-surface hidden sm:inline-block">Jack's</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex items-center gap-space-md">
+                    <a class="nav-dynamic-text transition-colors duration-300 font-label-caps-lg text-label-caps-lg uppercase text-on-surface hover:text-primary py-1" href="#home">Home</a>
+                    <a class="nav-dynamic-text transition-colors duration-300 font-label-caps-lg text-label-caps-lg uppercase text-on-surface hover:text-primary py-1" href="#collection">Collection</a>
+                    <a class="nav-dynamic-text transition-colors duration-300 font-label-caps-lg text-label-caps-lg uppercase text-on-surface hover:text-primary py-1" href="#about">About</a>
+                    <a class="nav-dynamic-text transition-colors duration-300 font-label-caps-lg text-label-caps-lg uppercase text-on-surface hover:text-primary py-1" href="#contact">Contact</a>
+                </nav>
+                <div class="flex items-center gap-space-sm">
+                    <a class="font-label-caps-lg text-label-caps-lg uppercase tracking-widest text-on-primary-container bg-primary-container hover:bg-primary hover:text-on-primary px-space-md py-space-xs transition-colors duration-300" href="#contact">Private Inquiry</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="loading" id="loading">
+        <div class="loader-content">
+            <div class="brand-mark">ATELIER HORLOGER</div>
+
+            <div class="loader-ring" id="loader-ring">
+                <span class="loader-percent" id="loader-percent">0%</span>
+            </div>
+
+            <h1 class="loading-title">TIMELESS CRAFT</h1>
+
+            <p class="loading-subtitle" id="loading-status">
+                Preparing your experience
+            </p>
+
+            <div class="loader-line">
+                <span id="loader-line-fill"></span>
+            </div>
+        </div>
+    </div>
+
+        <div class="scroll-section" id="home">
+        <main class="canvas-container">
+            <canvas id="watch-canvas" aria-label="Luxury watch scroll animation"></canvas>
+        </main>
+    </div>
+
+    <div class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container z-10 relative">
+<!-- Section B: Featured Watches -->
+<section class="w-full bg-surface py-space-xl" id="collection">
+<div class="max-w-7xl mx-auto px-margin-mobile sm:px-margin-tablet lg:px-margin">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-sm">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-primary uppercase tracking-widest block mb-space-xs">Private Salon Portfolio</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-normal">Curated Timepieces</h2>
+</div>
+<p class="font-body-md text-body-md text-outline max-w-md font-light">
+          A preview of distinguished horological design, handpicked for discerning collectors.
+        </p>
+</div>
+<!-- 3-Column Timepiece Mosaic -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Watch Card 1 -->
+<article class="group flex flex-col bg-surface-container-low rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+<div class="relative w-full aspect-[4/3] bg-surface-container-lowest overflow-hidden">
+<img alt="Gold Chronometer Selection" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQYF0553oMs1okZyB9Lp-kfPulFzpBtBAZqSirSG63uMc7gSdkekZlpd91CCN2G8HSWORdztE2CC68jCGsNPUc2h5doMdfsLFvr9EBhqdknhqoycFKyIS1xP0icTpVvrfcWnoTunBayun-HwDoPuuR8udLTdBWdJwyExoBi2hvpJM6IGJjUI_m9UpY2fJZwHjXCZvnQaEvwmZsrCvI8PgpK8QipfWuNrjV_1cDnH5Qz1bpk9YamyO40A"/>
+<div class="absolute top-space-xs left-space-xs">
+<span class="font-spec-code text-spec-code px-space-xs py-0.5 bg-surface-container-lowest/90 text-secondary-fixed-dim uppercase tracking-wider">Reference 01</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between bg-surface-container-low">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-outline uppercase block mb-1">Gold Chronometer Selection</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Precious Metal Chronometer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light mb-space-sm">
+                Exemplifying classical proportion with warm champagne accents, calibrated to master chronometric discipline.
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-spec-code text-spec-code text-primary uppercase tracking-widest">Salon Viewing</span>
+<a class="inline-flex items-center gap-1 font-label-caps-sm text-label-caps-sm text-on-surface group-hover:text-primary transition-colors uppercase" data-path="collection" href="#">
+                Explore Piece <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Watch Card 2 -->
+<article class="group flex flex-col bg-surface-container-low rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+<div class="relative w-full aspect-[4/3] bg-surface-container-lowest overflow-hidden">
+<img alt="Contemporary Dress Watch" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW0dTom6S6ay7lnpODcCmivnuMhaAljODzMSd6U3IVl325Bs4A-9lpswHogc41OXmlJIrm2ftvB7tq1-uPwCK3FLa_FL9vzFLwHo41oOE3P2_h1geURzqsyjuzv0EfMKyKCuh-ZT3RoKIzXvGsVIANvSj987SIV4mviahXNIbS9y6sVTGDKb1yuLUTPd1bl-ayKfUbAVTxZiGCmq8bSlvw0QMyeObDPHJ1tIqlAMukWJIdDP0mYOrikA"/>
+<div class="absolute top-space-xs left-space-xs">
+<span class="font-spec-code text-spec-code px-space-xs py-0.5 bg-surface-container-lowest/90 text-secondary-fixed-dim uppercase tracking-wider">Reference 02</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between bg-surface-container-low">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-outline uppercase block mb-1">Contemporary Dress Watch</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Dual-Tone Precision Bezel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light mb-space-sm">
+                Harmonizing surgical-grade steel with warm gold architecture, paired with tailored genuine leather.
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-spec-code text-spec-code text-primary uppercase tracking-widest">Salon Viewing</span>
+<a class="inline-flex items-center gap-1 font-label-caps-sm text-label-caps-sm text-on-surface group-hover:text-primary transition-colors uppercase" data-path="collection" href="#">
+                Explore Piece <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Watch Card 3 -->
+<article class="group flex flex-col bg-surface-container-low rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+<div class="relative w-full aspect-[4/3] bg-surface-container-lowest overflow-hidden">
+<img alt="Precision Chronograph" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt42tQKV9KmP-SF4lrUaMHBoc1W5r1_DaDGFYg6LdGx04DIL9aKgaSvQyy2Ou9LoOnQO5pSzFPyegYJHXntv5zXEcihEtGiqio5xiYaw2jYSwlgE0pHF9qI2xMT0LIChTjLgZILVJpuvgdkjb2wU_LVCiUesJrnYxkIlzrV90HQpz4-DCB5oX2skaPJsixiNXMyGBqdAgswcEobrxUKAcFaHlm5qPEKqDZ0zMRMpUBrvgnz--qMbvhKw"/>
+<div class="absolute top-space-xs left-space-xs">
+<span class="font-spec-code text-spec-code px-space-xs py-0.5 bg-surface-container-lowest/90 text-secondary-fixed-dim uppercase tracking-wider">Reference 03</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col flex-1 justify-between bg-surface-container-low">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-outline uppercase block mb-1">Precision Chronograph</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Obsidian Dial Multi-Scale</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-light mb-space-sm">
+                Complex register layout illuminated by hand-applied gilt numerals, resting upon Italian marble foundations.
+              </p>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-spec-code text-spec-code text-primary uppercase tracking-widest">Salon Viewing</span>
+<a class="inline-flex items-center gap-1 font-label-caps-sm text-label-caps-sm text-on-surface group-hover:text-primary transition-colors uppercase" data-path="collection" href="#">
+                Explore Piece <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Curatorial Anchor Link -->
+<div class="mt-space-lg flex justify-center">
+<a class="px-space-lg py-space-sm bg-surface-container hover:bg-surface-container-highest text-primary font-label-caps-lg text-label-caps-lg uppercase transition-all shadow-sm flex items-center gap-space-xs" data-path="collection" href="#">
+          View Complete Curated Collection <span class="material-symbols-outlined text-base">north_east</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Section C: The Details of Luxury (Inverted Light Ivory Editorial Section) -->
+<section class="w-full bg-[#F3EFE7] text-[#171614] py-space-xl shadow-inner" id="about">
+<div class="max-w-7xl mx-auto px-margin-mobile sm:px-margin-tablet lg:px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Mechanical Close-up Macro Visual -->
+<div class="lg:col-span-6 order-2 lg:order-1">
+<div class="relative bg-[#E5E0D6] p-space-xs rounded-sm shadow-xl">
+<img alt="Close-up macro detail of luxury watch movement escapement and balance wheel with fine Geneva stripes and gold gears" class="w-full h-[440px] sm:h-[520px] object-cover rounded-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGQFMWgnMNyLHfwlTxCGU9-WK7DTMdu1c76r0qN4_zMmy85O7o71dL1sAyr0PTu6L3Pu0dHlTVOl7JPDji7IURdsoXKwlN0EG3C1JtyzcTHeMk6YAfOEY7-qVmdh2V8uaNRiRMnR3UljxAroy0jkzkktCA83e1bQOMXP8zmFAA7NZgCEbAonvHOv9FLZh2ZaespH2Yr4Yijn6ej-x_utjSJiSN7x9UBo5Vpc88mRcIYTP9hMQ6wKPVZA"/>
+<div class="absolute bottom-6 left-6 right-6 bg-[#171614]/90 backdrop-blur-md p-space-sm text-on-surface rounded shadow-md">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-primary uppercase block">Specimen Analysis</span>
+<p class="font-body-sm text-body-sm text-on-surface">Escapement Geometry &amp; Hand-Anglage</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl">biotech</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Archival Curatorial Typography -->
+<div class="lg:col-span-6 order-1 lg:order-2 flex flex-col justify-center">
+<div class="inline-block mb-space-xs">
+<span class="font-label-caps-sm text-label-caps-sm tracking-widest text-[#695F52] uppercase">Bespoke Horological Assessment</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-[#171614] font-normal leading-tight mb-space-sm">
+            The Details of Luxury: Mechanical Artistry &amp; Pure Lineage
+          </h2>
+<p class="font-body-lg text-body-lg text-[#3E3A33] font-light leading-relaxed mb-space-md">
+            True luxury resides where the naked eye rarely wanders: the bevel of an internal bridge, the rhythmic balance of a free-sprung oscillator, and the enduring clarity of double-domed anti-reflective sapphire.
+          </p>
+<!-- Archival Specifications Matrix -->
+<div class="space-y-space-sm bg-[#EBE5DB] p-space-md rounded">
+<div class="flex items-baseline justify-between pb-space-xs">
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-wider text-[#695F52]">Mechanical Calibers</span>
+<span class="font-body-sm text-body-sm text-[#171614] font-medium text-right">Hand-Finished Precision Systems</span>
+</div>
+<div class="flex items-baseline justify-between pb-space-xs">
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-wider text-[#695F52]">Dial Architecture</span>
+<span class="font-body-sm text-body-sm text-[#171614] font-medium text-right">Guilloché, Obsidian &amp; Gilt Indices</span>
+</div>
+<div class="flex items-baseline justify-between pb-space-xs">
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-wider text-[#695F52]">Optical Integrity</span>
+<span class="font-body-sm text-body-sm text-[#171614] font-medium text-right">Synthetic Corundum Sapphire Crystals</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="font-label-caps-sm text-label-caps-sm uppercase tracking-wider text-[#695F52]">Curatorial Provenance</span>
+<span class="font-body-sm text-body-sm text-[#171614] font-medium text-right">Verified Southern California Salon</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section D: Personalized Inquiries (Dark Salon Ambience) -->
+<section class="w-full bg-surface-container-lowest py-space-xl" id="contact">
+<div class="max-w-7xl mx-auto px-margin-mobile sm:px-margin-tablet lg:px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Salon Atmosphere & Details -->
+<div class="lg:col-span-5 flex flex-col justify-between">
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-primary uppercase tracking-widest block mb-space-xs">Personalized Inquiries</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-normal mb-space-sm">
+              An Invitation to the Private Salon
+            </h2>
+<p class="font-body-md text-body-md text-outline font-light mb-space-lg">
+              Acquiring an exceptional timepiece is an intimate journey. Whether seeking a rare complication or requesting a private viewing in Los Angeles, our horological advisor is at your disposal.
+            </p>
+</div>
+<!-- Direct Access Channels -->
+<div class="space-y-space-md bg-surface-container-low p-space-md rounded-lg shadow-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-lg">location_on</span>
+</div>
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-outline uppercase block">Private Salon Location</span>
+<span class="font-body-md text-body-md text-on-surface font-light">Los Angeles, California, USA</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-lg">call</span>
+</div>
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-outline uppercase block">Direct Line</span>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors font-light" href="tel:+17655514490">
+                  +1 765-551-4490
+                </a>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined text-lg">mail</span>
+</div>
+<div>
+<span class="font-label-caps-sm text-label-caps-sm text-outline uppercase block">Curator Mailbox</span>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors font-light" href="mailto:jackandrew095663@gmail.com">
+                  jackandrew095663@gmail.com
+                </a>
+</div>
+</div>
+</div>
+</div>
+<!-- Direct Inquiry Form Card -->
+<div class="lg:col-span-7 bg-surface-container rounded-lg p-space-md sm:p-space-lg shadow-xl">
+<div class="mb-space-md">
+<span class="font-spec-code text-spec-code text-primary uppercase">Confidential Protocol</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Initiate Horological Dialogue</h3>
+</div>
+<form class="space-y-space-md" id="inquiry-form" onsubmit="event.preventDefault(); document.getElementById('inquiry-success').classList.remove('hidden'); this.reset();">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-caps-sm text-label-caps-sm text-outline uppercase" for="client-name">Full Name</label>
+<input class="bg-surface-container-lowest text-on-surface px-space-sm py-space-xs rounded-sm focus:outline-none focus:ring-1 focus:ring-primary font-body-md" id="client-name" placeholder="Collector Name" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps-sm text-label-caps-sm text-outline uppercase" for="client-phone">Telephone Contact</label>
+<input class="bg-surface-container-lowest text-on-surface px-space-sm py-space-xs rounded-sm focus:outline-none focus:ring-1 focus:ring-primary font-body-md" id="client-phone" placeholder="+1 (000) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps-sm text-label-caps-sm text-outline uppercase" for="client-email">Electronic Mail</label>
+<input class="bg-surface-container-lowest text-on-surface px-space-sm py-space-xs rounded-sm focus:outline-none focus:ring-1 focus:ring-primary font-body-md" id="client-email" placeholder="collector@domain.com" required="" type="email"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps-sm text-label-caps-sm text-outline uppercase" for="watch-focus">Area of Interest</label>
+<select class="bg-surface-container-lowest text-on-surface px-space-sm py-space-xs rounded-sm focus:outline-none focus:ring-1 focus:ring-primary font-body-md" id="watch-focus">
+<option value="gold-chronometer">Gold Chronometer Selection</option>
+<option value="contemporary-dress">Contemporary Dress Timepiece</option>
+<option value="precision-chronograph">Precision Chronograph</option>
+<option value="private-viewing">Schedule Los Angeles Salon Viewing</option>
+<option value="other">General Horological Consultation</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-caps-sm text-label-caps-sm text-outline uppercase" for="client-notes">Specific Requests or Requirements</label>
+<textarea class="bg-surface-container-lowest text-on-surface px-space-sm py-space-xs rounded-sm focus:outline-none focus:ring-1 focus:ring-primary font-body-md resize-none" id="client-notes" placeholder="Detail your timing, reference interest, or appointment preferences..." rows="4"></textarea>
+</div>
+<div class="pt-space-xs flex items-center justify-between">
+<span class="font-spec-code text-spec-code text-outline uppercase tracking-wider">Responses handled within 24h</span>
+<button class="px-space-lg py-space-sm bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-label-caps-lg text-label-caps-lg uppercase transition-all duration-300 shadow-md" type="submit">
+                Transmit Inquiry
+              </button>
+</div>
+<div class="hidden p-space-sm bg-surface-container-highest rounded text-secondary font-body-sm text-center" id="inquiry-success">
+              Thank you. Your inquiry has been received by our Los Angeles salon. We will reply discreetly.
+            </div>
+</form>
+</div>
+</div>
+</div>
+</section>
+<!-- Section E: Closing CTA Statement -->
+<section class="relative w-full bg-surface py-space-xl overflow-hidden">
+<div class="max-w-4xl mx-auto px-margin-mobile sm:px-margin-tablet text-center relative z-10">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-container-high mb-space-md text-primary">
+<span class="material-symbols-outlined text-2xl">schedule</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-normal mb-space-sm">
+        Time Measured with Distinction
+      </h2>
+<p class="font-body-lg text-body-lg text-outline font-light leading-relaxed max-w-2xl mx-auto mb-space-lg">
+        In an era of fleeting trends, mechanical horology remains the ultimate covenant between human mastery and eternal seconds. We invite you to experience our selections firsthand.
+      </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-space-sm">
+<a class="px-space-xl py-space-sm bg-primary hover:bg-primary-fixed text-on-primary font-label-caps-lg text-label-caps-lg uppercase transition-all duration-300 shadow-xl" data-path="contact" href="#">
+          Connect with the Curator
+        </a>
+<a class="px-space-md py-space-sm bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-caps-lg text-label-caps-lg uppercase transition-all duration-300 shadow-sm" data-path="collection" href="#">
+          Browse All Pieces
+        </a>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple interactive card and form feedback
+  document.addEventListener('DOMContentLoaded', () => {
+    const inquiryForm = document.getElementById('inquiry-form');
+    if (inquiryForm) {
+      inquiryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const successNotice = document.getElementById('inquiry-success');
+        if (successNotice) {
+          successNotice.classList.remove('hidden');
+        }
+      });
+    }
+  });
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="max-w-7xl mx-auto px-margin-mobile sm:px-margin-tablet lg:px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start pb-space-lg border-b border-outline-variant/20"><div class="md:col-span-5 flex flex-col gap-space-xs"><div class="flex items-center gap-space-xs"><img alt="Jack's Luxury Watches Official Seal" class="h-16 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W9Hsbgl-wLUlmb2eLkj8bDbm0UIQ0TpKozOd7wyle2AssNqKvBjnePSbOM3AwkEXhuyIN8f2ZMaeAbeQ5C_Owj41ef2T74Eji0vzEAVCximVFyMw6kkGQ5b5gboJ2ea48_wxJbGv_QGx5svWWdOY8sPt8Yv7Fsmw5sjgBfD6vymHZefdCHAA3cKvsRLzV4hqit3YfdyxiQOmP2WgezDBX4LTb7Tt-p4__HcpQsv4bWyupxfE6CwBcg9CCnd-d_imlrLECqQbDXFuk"/><span class="font-headline-md text-headline-md text-on-surface">Jack's Luxury Watches</span></div><p class="font-body-md text-body-md text-on-surface-variant font-light">Los Angeles, California, USA</p><p class="font-body-sm text-body-sm text-outline max-w-sm">Private acquisition and bespoke horological curation. Dedicated to discerning collectors worldwide.</p></div><div class="md:col-span-3 flex flex-col gap-space-xs"><h4 class="font-label-caps-sm text-label-caps-sm text-primary uppercase">Private Salon</h4><nav class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="home" href="#">Home</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="collection" href="#">Curated Collection</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="about" href="#">About the Maison</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors" data-path="contact" href="#">Inquire &amp; Appointments</a></nav></div><div class="md:col-span-4 flex flex-col gap-space-xs"><h4 class="font-label-caps-sm text-label-caps-sm text-primary uppercase">Direct Communications</h4><div class="flex flex-col gap-space-xs"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-space-xs" href="tel:+17655514490"><span class="material-symbols-outlined text-outline text-base">call</span>+1 765-551-4490</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-space-xs" href="mailto:jackandrew095663@gmail.com"><span class="material-symbols-outlined text-outline text-base">mail</span>jackandrew095663@gmail.com</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors flex items-center gap-space-xs" href="https://www.facebook.com/profile.php?id=61592767992392" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-outline text-base">public</span>Jack's Luxury Watches Official Facebook</a></div></div></div><div class="pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-xs text-outline"><p class="font-label-caps-sm text-label-caps-sm text-outline uppercase">© 2025 Jack's Luxury Watches. Los Angeles, California. All rights reserved.</p><p class="font-spec-code text-spec-code text-outline uppercase tracking-widest">Beverly Hills • Los Angeles Salon</p></div></div></footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById("watch-canvas");
+        const ctx = canvas.getContext("2d", { alpha: false });
+
+        const loading = document.getElementById("loading");
+        const loaderRing = document.getElementById("loader-ring");
+        const loaderPercent = document.getElementById("loader-percent");
+        const loadingStatus = document.getElementById("loading-status");
+        const loaderLineFill = document.getElementById("loader-line-fill");
+
+        const frameCount = 150;
+
+        const currentFrame = index =>
+            `frames/ezgif-frame-${String(index + 1).padStart(3, "0")}.jpg`;
+
+        const images = new Array(frameCount);
+
+        // Reuse one offscreen canvas to blend the current frame.
+        const frameCanvas = document.createElement("canvas");
+        const frameCtx = frameCanvas.getContext("2d");
+
+        let loadedCount = 0;
+        let currentIndex = 0;
+        let hideTimer = null;
+        let resizeRAF = 0;
+        let drawRAF = 0;
+        let loadingFinished = false;
+
+        // Full-frame scale. Lower = smaller watch and more breathing room.
+        const WATCH_SCALE = 0.86;
+
+        // Background color used behind the feathered image edges.
+        const BACKGROUND = "#08090b";
+
+        function setCanvasSize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            canvas.width = Math.round(width * dpr);
+            canvas.height = Math.round(height * dpr);
+
+            canvas.style.width = width + "px";
+            canvas.style.height = height + "px";
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            frameCanvas.width = width;
+            frameCanvas.height = height;
+
+            drawFrame(currentIndex);
+        }
+
+        /*
+          Draw the image on an offscreen canvas.
+          A soft alpha mask blends the frame's outer edges into
+          the page instead of showing a hard rectangular boundary.
+        */
+        function drawFrame(index) {
+            const img = images[index];
+
+            if (!img || !img.complete || !img.naturalWidth) {
+                return;
+            }
+
+            const vw = window.innerWidth;
+            const vh = window.innerHeight;
+
+            // Fit the whole frame inside the screen, preserving proportions.
+            const fitScale = Math.min(
+                vw / img.naturalWidth,
+                vh / img.naturalHeight
+            );
+
+            const scale = fitScale * WATCH_SCALE;
+            const drawWidth = img.naturalWidth * scale;
+            const drawHeight = img.naturalHeight * scale;
+
+            const x = (vw - drawWidth) / 2;
+            const y = (vh - drawHeight) / 2;
+
+            // Paint a consistent background first.
+            const bg = ctx.createRadialGradient(
+                vw * 0.5, vh * 0.44, 0,
+                vw * 0.5, vh * 0.44, Math.max(vw, vh) * 0.75
+            );
+
+            bg.addColorStop(0, "#202329");
+            bg.addColorStop(0.42, "#111419");
+            bg.addColorStop(1, BACKGROUND);
+
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, vw, vh);
+
+            // Render the current frame at the chosen scale.
+            frameCtx.clearRect(0, 0, vw, vh);
+            frameCtx.globalCompositeOperation = "source-over";
+            frameCtx.drawImage(img, x, y, drawWidth, drawHeight);
+
+            /*
+              Feather only the frame perimeter.
+              The central watch stays sharp while the dark edges
+              become transparent and reveal the matching background.
+            */
+            frameCtx.globalCompositeOperation = "destination-in";
+
+            const featherX = Math.min(drawWidth * 0.13, 150);
+            const featherY = Math.min(drawHeight * 0.13, 100);
+
+            // Horizontal alpha mask.
+            const horizontal = frameCtx.createLinearGradient(
+                x, 0, x + drawWidth, 0
+            );
+
+            horizontal.addColorStop(0, "rgba(0,0,0,0)");
+            horizontal.addColorStop(
+                Math.min(0.16, featherX / drawWidth),
+                "rgba(0,0,0,1)"
+            );
+            horizontal.addColorStop(
+                Math.max(0.84, 1 - featherX / drawWidth),
+                "rgba(0,0,0,1)"
+            );
+            horizontal.addColorStop(1, "rgba(0,0,0,0)");
+
+            frameCtx.fillStyle = horizontal;
+            frameCtx.fillRect(x, y, drawWidth, drawHeight);
+
+            // Vertical alpha mask, intersected with the horizontal mask.
+            const vertical = frameCtx.createLinearGradient(
+                0, y, 0, y + drawHeight
+            );
+
+            vertical.addColorStop(0, "rgba(0,0,0,0)");
+            vertical.addColorStop(
+                Math.min(0.15, featherY / drawHeight),
+                "rgba(0,0,0,1)"
+            );
+            vertical.addColorStop(
+                Math.max(0.85, 1 - featherY / drawHeight),
+                "rgba(0,0,0,1)"
+            );
+            vertical.addColorStop(1, "rgba(0,0,0,0)");
+
+            frameCtx.globalCompositeOperation = "destination-in";
+            frameCtx.fillStyle = vertical;
+            frameCtx.fillRect(x, y, drawWidth, drawHeight);
+
+            frameCtx.globalCompositeOperation = "source-over";
+
+            // Composite the feathered image onto the background.
+            ctx.drawImage(frameCanvas, 0, 0, vw, vh);
+        }
+
+        function updateProgress() {
+            const percent = Math.round(loadedCount / frameCount * 100);
+
+            loaderPercent.textContent = percent + "%";
+            loaderRing.style.setProperty(
+                "--progress",
+                (percent * 3.6) + "deg"
+            );
+
+            loaderLineFill.style.transform = `scaleX(${percent / 100})`;
+
+            if (loadedCount >= frameCount && !loadingFinished) {
+                loadingFinished = true;
+                loadingStatus.textContent = "Experience ready";
+
+                hideTimer = setTimeout(() => {
+                    loading.classList.add("hidden");
+                }, 500);
+            }
+        }
+
+        function onFrameFinished(index) {
+            loadedCount++;
+            updateProgress();
+
+            // Redraw if the arriving frame is currently requested.
+            if (index === currentIndex) {
+                drawFrame(currentIndex);
+            }
+        }
+
+        // Load all 150 animation frames.
+        for (let i = 0; i < frameCount; i++) {
+            const img = new Image();
+            images[i] = img;
+
+            img.onload = () => onFrameFinished(i);
+
+            img.onerror = () => {
+                console.error("Could not load frame:", currentFrame(i));
+                onFrameFinished(i);
+            };
+
+            img.src = currentFrame(i);
+        }
+
+        function handleScroll() {
+            const scrollSection = document.querySelector('.scroll-section');
+            const sectionHeight = scrollSection ? scrollSection.offsetHeight : window.innerHeight * 5;
+            const maxScroll = sectionHeight - window.innerHeight;
+            
+            // Calculate scroll fraction based on the sticky section height
+            const fraction = maxScroll > 0
+                ? Math.max(0, Math.min(1, window.scrollY / maxScroll))
+                : 0;
+
+            currentIndex = Math.min(
+                frameCount - 1,
+                Math.floor(fraction * (frameCount - 1))
+            );
+
+            cancelAnimationFrame(drawRAF);
+
+            drawRAF = requestAnimationFrame(() => {
+                drawFrame(currentIndex);
+            });
+        }
+
+        window.addEventListener("scroll", handleScroll, {
+            passive: true
+        });
+
+        window.addEventListener("resize", () => {
+            cancelAnimationFrame(resizeRAF);
+
+            resizeRAF = requestAnimationFrame(() => {
+                setCanvasSize();
+                handleScroll();
+            });
+        });
+
+        setCanvasSize();
+        handleScroll();
+
+        // Navbar dynamic color update
+        function updateNavbarColor() {
+            const navbar = document.getElementById('navbar');
+            const aboutSection = document.getElementById('about');
+            
+            if (!navbar || !aboutSection) return;
+            
+            const navRect = navbar.getBoundingClientRect();
+            const aboutRect = aboutSection.getBoundingClientRect();
+            
+            // Check if the navbar overlaps with the about section
+            // We use a small threshold (10px) to make the transition feel natural
+            const isOverlapping = (aboutRect.top <= navRect.bottom - 10) && (aboutRect.bottom >= navRect.top + 10);
+            
+            const textElements = navbar.querySelectorAll('.nav-dynamic-text');
+            
+            if (isOverlapping) {
+                textElements.forEach(el => {
+                    el.classList.remove('text-on-surface');
+                    el.classList.add('text-[#111111]');
+                });
+            } else {
+                textElements.forEach(el => {
+                    el.classList.remove('text-[#111111]');
+                    el.classList.add('text-on-surface');
+                });
+            }
+        }
+        
+        window.addEventListener('scroll', updateNavbarColor, { passive: true });
+        window.addEventListener('resize', updateNavbarColor, { passive: true });
+        
+        // Initialize color check on load
+        updateNavbarColor();
+    </script>
+</body>
+
+</html>
+
